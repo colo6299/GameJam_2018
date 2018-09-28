@@ -51,7 +51,6 @@ public class FlowObject : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Track();
         if (slowing)
         {
             Slow();
@@ -80,6 +79,9 @@ public class FlowObject : MonoBehaviour {
             falseTimescale = 1f;
             started = true;
             startTime = Time.time;
+            mass = rbody.mass;
+            vel = rbody.velocity;
+            angVel = rbody.angularVelocity;
         }
         float prev = falseTimescale;
         falseTimescale = (slowDistance - (Time.time - startTime)) / slowDistance;
@@ -116,11 +118,25 @@ public class FlowObject : MonoBehaviour {
             rbody.isKinematic = true;
         }
 
-        ObjectPast past = pastList[pastList.Count - 1];
-        pastList.RemoveAt(pastList.Count - 1);
+        if (pastList.Count != 0)
+        {
+            ObjectPast past = pastList[pastList.Count - 1];
+            pastList.RemoveAt(pastList.Count - 1);
 
-        transform.position = past.position;
-        transform.rotation = past.rotation;
+            transform.position = past.position;
+            transform.rotation = past.rotation;
+        }
+        else
+        {
+            reversing = false;
+            started = false;
+            rbody.isKinematic = false;
+            rbody.velocity = vel;
+            rbody.angularVelocity = angVel;
+            rbody.mass = mass;
+
+        }
+
         
 
 
@@ -137,6 +153,7 @@ public class FlowObject : MonoBehaviour {
     {
         ObjectPast past = new ObjectPast(transform.position, transform.rotation);
         pastList.Add(past);
+        Debug.Log(past);
     }
 
 
