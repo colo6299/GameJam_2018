@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour {
 
     private float seeChance;
 
-    void Start()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();

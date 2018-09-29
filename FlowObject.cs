@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FlowObject : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class FlowObject : MonoBehaviour {
     public static bool slowing;
      
     private Rigidbody rbody;
+    private Enemy enemy;
+    private float agentSpeed;
+    private float agentTurn;
 
     private float mass;
     private Vector3 vel;
@@ -23,8 +27,10 @@ public class FlowObject : MonoBehaviour {
     private float startTime;
     private bool started;
     private bool destroyAtEnd;
+    
 
     public bool wallFlag = false;
+    public bool enemyFlag = false;
 
     private List<ObjectPast> pastList = new List<ObjectPast>();
     
@@ -38,6 +44,11 @@ public class FlowObject : MonoBehaviour {
         vel = rbody.velocity;
         angVel = rbody.angularVelocity;
         destroyAtEnd = slowing;
+        if (enemyFlag)
+        {
+            enemy = GetComponent<Enemy>();
+
+        }
     }
 
 
@@ -67,7 +78,7 @@ public class FlowObject : MonoBehaviour {
 
     void Slow()
     {
-
+        
 
         Track();
       
@@ -80,6 +91,11 @@ public class FlowObject : MonoBehaviour {
             mass = rbody.mass;
             vel = rbody.velocity;
             angVel = rbody.angularVelocity;
+            if (enemyFlag)
+            {
+                agentSpeed = enemy.agent.speed;
+                agentTurn = enemy.agent.angularSpeed;
+            }
         }
 
 
@@ -92,9 +108,16 @@ public class FlowObject : MonoBehaviour {
             rbody.angularVelocity *= rl;
 
             rbody.AddForce(Vector3.up * rbody.mass * 9.81f * (1 - falseTimescale), ForceMode.Force);
+
+            if (enemyFlag)
+            {
+                enemy.agent.speed = agentSpeed * falseTimescale;
+                enemy.agent.angularSpeed = agentTurn * falseTimescale;
+            }
         }
         else
         {
+
             slowing = false;
             reversing = true;
             started = false;
@@ -113,6 +136,11 @@ public class FlowObject : MonoBehaviour {
             rbody.velocity = Vector3.zero;
             rbody.angularVelocity = Vector3.zero;
             rbody.isKinematic = true;
+            if (enemyFlag)
+            {
+                enemy.agent.enabled = false;
+                enemy.enabled = false;
+            }
         }
 
         if (pastList.Count != 0)
@@ -139,6 +167,11 @@ public class FlowObject : MonoBehaviour {
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;
             rbody.mass = mass;
+            if (enemyFlag)
+            {
+                enemy.agent.enabled = true;
+                enemy.enabled = true;
+            }
         }
 
         
