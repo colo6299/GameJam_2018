@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
                 play_clicked = false;
                 PlayGame();
             }
-            else
+            else if (quit_clicked)
             {
                 i = -1;
                 UpdatePixels(i);
