@@ -60,7 +60,6 @@ public class MainMenu : MonoBehaviour
 
     void UpdatePixels(float i)
     {
-        print(i);
         rend.GetMaterial().SetFloat("_InvertAmount", i);
     }
 
