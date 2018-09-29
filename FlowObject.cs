@@ -6,21 +6,25 @@ public class FlowObject : MonoBehaviour {
 
 
     public bool inFlow;
-    public float slowDistance = 3f;
+    public static float slowDistance = 3f;
 
     private ObjectPast[] past;
-    private static bool reversing;
-    private static bool slowing;
+    public static bool reversing;
+    public static bool slowing;
+     
     private Rigidbody rbody;
 
     private float mass;
     private Vector3 vel;
     private Vector3 angVel;
-    private static float falseTimescale = 1;
+    public static float falseTimescale = 1;
+    public static float falseTimescalePrev = 1;
 
     private float startTime;
     private bool started;
     private bool destroyAtEnd;
+
+    public bool isMaster = false;
 
     private List<ObjectPast> pastList = new List<ObjectPast>();
     
@@ -43,11 +47,7 @@ public class FlowObject : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) & !slowing)
-        {
-            slowing = true;
-            Debug.Log(slowing);
-        }
+
     }
 
 
@@ -55,6 +55,7 @@ public class FlowObject : MonoBehaviour {
     {
         if (slowing)
         {
+
             Slow();
         }
         if (reversing)
@@ -74,19 +75,17 @@ public class FlowObject : MonoBehaviour {
 
         if (!started)
         {
-            falseTimescale = 1f;
             started = true;
             startTime = Time.time;
             mass = rbody.mass;
             vel = rbody.velocity;
             angVel = rbody.angularVelocity;
         }
-        float prev = falseTimescale;
-        falseTimescale = (slowDistance - (Time.time - startTime)) / slowDistance;
+
 
         if (falseTimescale > 0)
         {
-            float rl = falseTimescale / prev;
+            float rl = falseTimescale / falseTimescalePrev;
 
             rbody.mass *= rl;
             rbody.velocity *= rl;
