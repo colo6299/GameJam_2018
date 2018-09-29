@@ -43,7 +43,11 @@
 		UNITY_INSTANCING_BUFFER_END(Props)
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
-			// Albedo comes from a texture tinted by color
+			fixed4 _InverseColor;
+			fixed4 _NewColor;
+			fixed4 _InverseEmission;
+			fixed4 _NewEmission;
+			fixed4 e;
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			fixed4 a = c.a;
 
@@ -56,15 +60,16 @@
 				_NoisyInverseAmount = 1;
 			}
 
-			fixed4 _InverseColor = (1, 1, 1, 1) - _Color;
-			fixed4 _NewColor = _Color + _NoisyInverseAmount * (_InverseColor - _Color);
-			c = tex2D(_MainTex, IN.uv_MainTex) * _NewColor;
+
+			_InverseColor = (1, 1, 1, 1) - _Color* tex2D(_MainTex, IN.uv_MainTex);
+			_NewColor = _Color * tex2D(_MainTex, IN.uv_MainTex) + _NoisyInverseAmount * (_InverseColor - _Color* tex2D(_MainTex, IN.uv_MainTex));
+			c =_NewColor;
 
 
 			if (_Emissive == 1) {
-				fixed4 _InverseEmission = (1, 1, 1, 1) - _EmissionColor;
-				fixed4 _NewEmission = _EmissionColor + _NoisyInverseAmount * (_InverseEmission - _EmissionColor);
-				fixed4 e = tex2D(_MainTex, IN.uv_MainTex) * _NewEmission;
+				_InverseEmission = (1, 1, 1, 1) - _EmissionColor;
+				_NewEmission = _EmissionColor + _NoisyInverseAmount * (_InverseEmission - _EmissionColor);
+				e = tex2D(_MainTex, IN.uv_MainTex) * _NewEmission;
 				o.Emission = e;
 			}
 			
