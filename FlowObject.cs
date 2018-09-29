@@ -20,6 +20,7 @@ public class FlowObject : MonoBehaviour {
 
     private float startTime;
     private bool started;
+    private bool destroyAtEnd;
 
     private List<ObjectPast> pastList = new List<ObjectPast>();
     
@@ -32,6 +33,7 @@ public class FlowObject : MonoBehaviour {
         mass = rbody.mass;
         vel = rbody.velocity;
         angVel = rbody.angularVelocity;
+        destroyAtEnd = slowing;
     }
 
 
@@ -60,10 +62,6 @@ public class FlowObject : MonoBehaviour {
             Reverse();
         }
     }
-
-
-
-
 
 
     void Slow()
@@ -128,13 +126,17 @@ public class FlowObject : MonoBehaviour {
         }
         else
         {
+            if (destroyAtEnd)
+            {
+                Destroy(gameObject);
+            }
+
             reversing = false;
             started = false;
             rbody.isKinematic = false;
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;
             rbody.mass = mass;
-
         }
 
         
