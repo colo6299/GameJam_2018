@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Projectile : MonoBehaviour {
     public float projSpeed = 30f;
     private float rSpeed;
 
+    
 
 
     void Start()
@@ -18,12 +20,31 @@ public class Projectile : MonoBehaviour {
     }
 
 
+    void Update()
+    {
+        rbody.angularVelocity = Vector3.zero;
+        rSpeed = projSpeed * FlowObject.falseTimescale;
+        Fly();
+    }
 
 
+    void Fly()
+    {
+        rbody.velocity = rSpeed * transform.forward;
+    }
 
 
-
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerCollider")
+        {
+            
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
 

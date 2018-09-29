@@ -26,7 +26,6 @@ public class FlowObjectMaster : MonoBehaviour {
         {
             Crunch();
         }
-        Debug.Log(FlowObject.falseTimescale);
     }
 
     void Crunch()
@@ -43,6 +42,8 @@ public class FlowObjectMaster : MonoBehaviour {
         {
             FlowObject.falseTimescale = 1;
             st = false;
+            started = false;
+            FlowObject.slowing = false;
         }
         
     }

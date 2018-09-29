@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
@@ -9,19 +10,22 @@ public class Enemy : MonoBehaviour {
     public float speed;
 
     public float fireRate;
+    private float fireTime;
     public GameObject projectile;
     public Transform firePos;
     public Animator animator;
     public Transform eyePos;
+    public NavMeshAgent agent;
 
     public GameObject player;
     public Transform waypoints;
+    public Transform currentTransform;
     public float waypointDelay = 10f;
     private float wptTime;
     private int wptIter = 0;
 
     private float seeTotal;
-    private float seeThreshold = 5f;
+    public float seeThreshold = 5f;
     private bool sawStart;
     private bool seesPlayer;
     private Vector3 sawPos;
@@ -34,6 +38,7 @@ public class Enemy : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
     }
 
 
@@ -41,6 +46,8 @@ public class Enemy : MonoBehaviour {
     void Update()
     {
         Look();
+        Move();
+        Debug.Log(seeTotal);
     }
 
 
@@ -51,7 +58,7 @@ public class Enemy : MonoBehaviour {
     {
         if (seesPlayer)
         {
-
+            WaypointMove();
         }
         else
         {
@@ -65,22 +72,32 @@ public class Enemy : MonoBehaviour {
         {
             wptIter++;
             wptTime = Time.time + waypointDelay;
+            currentTransform = waypoints.GetChild(wptIter % waypoints.childCount);
         }
+        agent.SetDestination(currentTransform.position);
     }
 
+    void AttackMove()
+    {
+        agent.SetDestination(player.transform.position);
+    }
 
 
 
     void Fire()
     {
-        Instantiate(projectile, firePos.position, firePos.rotation, null);
+        if (Time.time > fireTime)
+        {
+            Destroy(Instantiate(projectile, firePos.position, firePos.rotation, null), 20);
+            fireTime = Time.time + 1 / fireRate;
+        }
     }
 
 
     void See()
     {
         RaycastHit hit;
-        if (Physics.Raycast(eyePos.position, player.transform.position - eyePos.position, out hit))
+        if (Physics.Linecast(eyePos.position, player.transform.position, out hit))
         {
             if (hit.transform.gameObject.tag == "Player")
             {
@@ -92,12 +109,12 @@ public class Enemy : MonoBehaviour {
     void Look()
     {
         RaycastHit hit;
-        if (Physics.Raycast(eyePos.position, player.transform.position - eyePos.position, out hit))
+        if (Physics.Linecast(eyePos.position, player.transform.position, out hit))
         {
             if (hit.transform.gameObject.tag == "Player")
             {
-
-                Vector3 targetDir = player.transform.position - transform.position;
+                Debug.Log("si");
+                Vector3 targetDir = player.transform.position + Vector3.up - transform.position;
                 float angle = Vector3.Angle(targetDir, eyePos.forward);
 
                 if (angle > 130)
@@ -112,12 +129,12 @@ public class Enemy : MonoBehaviour {
                     seeChance += 0.2f;
                 }
 
-                seeTotal += seeChance / Time.deltaTime;
+                seeTotal += seeChance * Time.deltaTime * 10;
                 
             }
         }
 
-        seeTotal -= 0.2f / Time.deltaTime;
+        seeTotal -= 2f * Time.deltaTime;
 
         if (seeTotal > seeThreshold * sightCeil)
         {

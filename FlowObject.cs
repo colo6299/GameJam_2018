@@ -101,7 +101,7 @@ public class FlowObject : MonoBehaviour {
             Reverse();
         }
 
-        Debug.Log(falseTimescale);
+
 
     }
 
@@ -154,7 +154,6 @@ public class FlowObject : MonoBehaviour {
     {
         ObjectPast past = new ObjectPast(transform.position, transform.rotation);
         pastList.Add(past);
-        Debug.Log(past);
     }
 
 
