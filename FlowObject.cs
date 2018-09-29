@@ -6,7 +6,7 @@ public class FlowObject : MonoBehaviour {
 
 
     public bool inFlow;
-    public static float slowDistance = 3f;
+    public static float slowDistance = 5f;
 
     private ObjectPast[] past;
     public static bool reversing;
@@ -24,7 +24,7 @@ public class FlowObject : MonoBehaviour {
     private bool started;
     private bool destroyAtEnd;
 
-    public bool isMaster = false;
+    public bool wallFlag = false;
 
     private List<ObjectPast> pastList = new List<ObjectPast>();
     
@@ -132,7 +132,10 @@ public class FlowObject : MonoBehaviour {
 
             reversing = false;
             started = false;
-            rbody.isKinematic = false;
+            if (!wallFlag)
+            {
+                rbody.isKinematic = false;
+            }
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;
             rbody.mass = mass;

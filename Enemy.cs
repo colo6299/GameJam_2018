@@ -47,7 +47,6 @@ public class Enemy : MonoBehaviour {
     {
         Look();
         Move();
-        Debug.Log(seeTotal);
     }
 
 
@@ -113,7 +112,6 @@ public class Enemy : MonoBehaviour {
         {
             if (hit.transform.gameObject.tag == "Player")
             {
-                Debug.Log("si");
                 Vector3 targetDir = player.transform.position + Vector3.up - transform.position;
                 float angle = Vector3.Angle(targetDir, eyePos.forward);
 
@@ -124,7 +122,7 @@ public class Enemy : MonoBehaviour {
                 else
                 {
                     angle /= 180;
-                    seeChance = 1 - angle;
+                    seeChance = 1 - angle * angle;
                     seeChance /= targetDir.magnitude / 5f;
                     seeChance += 0.2f;
                 }

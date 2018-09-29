@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour {
     {
         if (other.gameObject.tag == "PlayerCollider")
         {
-            
+            other.transform.parent.GetComponent<PlayerSceneManager>().Die();
         }
         else
         {

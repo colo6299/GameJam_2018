@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public float cameraMaxDown = 80;
 
     private bool canJump = true;
+    private bool jump = false;
     private float speed;
 
     CursorLockMode wantedMode;
@@ -33,6 +34,18 @@ public class PlayerMovement : MonoBehaviour {
         // Hide cursor when locking
         Cursor.visible = (CursorLockMode.Locked != wantedMode);
     }
+
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+    }
+
+
+
 
     void FixedUpdate()
     {
@@ -71,16 +84,20 @@ public class PlayerMovement : MonoBehaviour {
 
         if (!canJump)
         {
-            if (Physics.BoxCast(player.transform.position + Vector3.up, Vector3.one * 0.4f, Vector3.down, player.transform.rotation, 1.1f))
+            if (Physics.BoxCast(player.transform.position + Vector3.up, Vector3.one * 0.4f, Vector3.down, player.transform.rotation, 0.8f))
             {
                 canJump = true;
             }
         }
 
-        if (Input.GetButtonDown("Jump") & canJump)
+        if (jump & canJump)
         {
             rbodyPlayer.velocity = new Vector3(rbodyPlayer.velocity.x, jumpVel, rbodyPlayer.velocity.z);
             canJump = false;
+        }
+        else
+        {
+            jump = false;
         }
 
 

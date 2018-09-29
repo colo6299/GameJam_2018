@@ -25,15 +25,10 @@ public class PlayerSceneManager : MonoBehaviour {
 
     void Update()
     {
-
+        Time.timeScale = 1;
         if (Input.GetButtonDown("Cancel") & !inMenu & !ded)
         {
-            inMenu = true;
-            escMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            plrMv.enabled = false;
-            Time.timeScale = 0;
+            OpenMenu();
         }
         else if (Input.GetButtonDown("Cancel") & inMenu & !ded)
         {
@@ -42,11 +37,10 @@ public class PlayerSceneManager : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             plrMv.enabled = true;
-            Time.timeScale = 1;
         }
 
 
-
+        Debug.Log(Cursor.lockState);
 
 
 
@@ -66,14 +60,25 @@ public class PlayerSceneManager : MonoBehaviour {
 
         if (ded & toMenu)
         {
-            SceneManager.LoadSceneAsync("MainMenu");
+            SceneManager.LoadSceneAsync("Main Menu");
         }
     }
 
+    void OpenMenu()
+    {
+        inMenu = true;
+        escMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        plrMv.enabled = false;
+    }
 
     public void Die()
     {
         plrMv.enabled = false;
         ded = true;
+        OpenMenu();
+        deathMenu.SetActive(true);
+
     }
 }

@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync("LevelZero");
     }
 
     public void QuitGame()
@@ -44,8 +44,7 @@ public class MainMenu : MonoBehaviour
                 quit_clicked = false;
                 QuitGame();
             }
-        }
-        
+        }     
     }
 
     public void PlayButtonClicked()

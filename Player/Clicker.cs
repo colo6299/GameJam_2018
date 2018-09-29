@@ -8,7 +8,7 @@ public class Clicker : MonoBehaviour {
     private int layerMask = 1 << 0;
 
     private int overrideMask = 1 << 15;
-    private bool overrideFlag = true;
+    private bool overrideFlag = false;
 
 
     void Awake()
@@ -22,11 +22,11 @@ public class Clicker : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             Click();
-        }
+        }/*
         if (Input.GetButtonDown("Fire2"))
         {
             OverClick(15);
-        }
+        }*/
     }
 
 

@@ -8,6 +8,20 @@ public class FlowObjectMaster : MonoBehaviour {
     private float startTime;
     private bool started = false;
     private bool st = false;
+    private Camera playerCam;
+
+    private float normalFOV;
+    private float FOVspread = 50f;
+    private float FOVdistance = 0.5f;
+    private float FOVretDistance = 0.1f;
+    private bool returning = false;
+
+
+    void Awake()
+    {
+        playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        normalFOV = playerCam.fieldOfView;
+    }
 
 
     void Update()
@@ -18,6 +32,32 @@ public class FlowObjectMaster : MonoBehaviour {
             st = true;
 
         }
+
+        if ((startTime + FlowObject.slowDistance * 2) - Time.time < 1f)
+        {
+            if (!(FlowObject.falseTimescale > 0))
+            {
+                playerCam.fieldOfView += FOVspread * Time.deltaTime / FOVdistance;
+            }           
+        }
+
+        if (returning)
+        {
+            if (playerCam.fieldOfView > normalFOV)
+            {
+                playerCam.fieldOfView -= FOVspread * Time.deltaTime / FOVretDistance;
+            }
+            else if (playerCam.fieldOfView < normalFOV)
+            {
+                playerCam.fieldOfView = normalFOV;
+            }
+            else
+            {
+                returning = false;
+            }
+        }
+
+
     }
 
     void FixedUpdate()
@@ -44,6 +84,7 @@ public class FlowObjectMaster : MonoBehaviour {
             st = false;
             started = false;
             FlowObject.slowing = false;
+            returning = true;
         }
         
     }
