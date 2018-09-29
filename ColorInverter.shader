@@ -47,7 +47,7 @@
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			fixed4 a = c.a;
 
-			half _NoisyInverseAmount = _InvertAmount + (tex2D(_Noise, IN.uv_Noise + _Time/20 +.5).r + tex2D(_Noise, IN.uv_Noise -_Time/20).r);
+			half _NoisyInverseAmount = _InvertAmount + (tex2D(_Noise, IN.uv_Noise + _Time/20 + .5).r + tex2D(_Noise, IN.uv_Noise - _Time / 20).r);
 
 			if (_NoisyInverseAmount <= 1) {
 				_NoisyInverseAmount = -1;
