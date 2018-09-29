@@ -51,7 +51,7 @@
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			fixed4 a = c.a;
 
-			half _NoisyInverseAmount = _InvertAmount + (tex2D(_Noise, IN.uv_Noise + _Time/20 + .5).r + tex2D(_Noise, IN.uv_Noise - _Time / 20).r);
+			half _NoisyInverseAmount = -_InvertAmount + (tex2D(_Noise, IN.uv_Noise + _Time/20 + .5).r + tex2D(_Noise, IN.uv_Noise - _Time / 20).r);
 
 			if (_NoisyInverseAmount <= 1) {
 				_NoisyInverseAmount = -1;
@@ -64,6 +64,7 @@
 			_InverseColor = (1, 1, 1, 1) - _Color * tex2D(_MainTex, IN.uv_MainTex);
 			_NewColor = tex2D(_MainTex, IN.uv_MainTex) + _NoisyInverseAmount * (_InverseColor - _Color * tex2D(_MainTex, IN.uv_MainTex));
 			c = _NewColor;
+
 
 			if (_Emissive == 1) {
 				_InverseEmission = (1, 1, 1, 1) - _EmissionColor * tex2D(_MainTex, IN.uv_MainTex);
