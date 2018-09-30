@@ -240,7 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114971460280656920
 MonoBehaviour:
   m_ObjectHideFlags: 1
