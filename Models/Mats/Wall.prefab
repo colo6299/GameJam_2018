@@ -289,6 +289,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4293479478500814}
+  - component: {fileID: 65570769401387866}
+  - component: {fileID: 114730342395144430}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -5484,6 +5486,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8501326, y: 1.8442295, z: 3.856172}
   m_Center: {x: -0.00085263065, y: 0.008614771, z: 0.00000079044867}
+--- !u!65 &65570769401387866
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222067745198836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.006238, y: 2.6513002, z: 3.5908651}
+  m_Center: {x: -0.0031189919, y: 1.3791107, z: 0.016270638}
 --- !u!65 &65576117566971250
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5640,7 +5654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114014309968428462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5664,7 +5679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114084519027666328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5710,7 +5726,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114134247748121226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5745,7 +5762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114179458128912288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5758,7 +5776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114201812476020882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5793,7 +5812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114211361746194076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5817,7 +5837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114245035258282632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5874,7 +5895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114297387090742998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5953,7 +5975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114442462574558658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5966,7 +5989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114463994897925804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5979,7 +6003,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114468192339220028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5992,7 +6017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114475169598985548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6016,7 +6042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114512455526529038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6062,7 +6089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114544965588375066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6108,7 +6136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114597343174965022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6121,7 +6150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114605195769135266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6189,7 +6219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114649377039145826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6246,7 +6277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114726245263369730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6270,7 +6302,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
+--- !u!114 &114730342395144430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222067745198836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8c42358fd10434fa394de22c9f5fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114740773989702974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6305,7 +6349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114777108286377236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6329,7 +6374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114784676444306354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6353,7 +6399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114798416330256886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6366,7 +6413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114804681979928254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6456,7 +6504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114848267834047062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6491,7 +6540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114874127214322262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6526,7 +6576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114949527698092886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6539,7 +6590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inFlow: 0
-  isMaster: 0
+  wallFlag: 1
+  enemyFlag: 0
 --- !u!114 &114969510146783996
 MonoBehaviour:
   m_ObjectHideFlags: 1
