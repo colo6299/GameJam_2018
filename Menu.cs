@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
 
     public CanvasRenderer rend;
     private bool clicked;
+    private bool quit_clicked = false;
     float i = -1;
     string level = "LevelZero";
 
@@ -20,7 +21,11 @@ public class LevelMenu : MonoBehaviour
 
     private void Update()
     {
-        if (clicked)
+        if (quit_clicked)
+        {
+            Application.Quit();
+        }
+        else if (clicked)
         {
             if (i < 1f)
             {
@@ -63,6 +68,17 @@ public class LevelMenu : MonoBehaviour
     {
         clicked = true;
         level = "Main Menu";
+    }
+
+    public void LevelButtonClicked()
+    {
+        clicked = true;
+        level = "LevelSelect";
+    }
+
+    public void QuitButtonClicked()
+    {
+        quit_clicked = true;
     }
 
     void UpdatePixels(float i)
