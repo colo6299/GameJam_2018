@@ -31,6 +31,7 @@ public class FlowObject : MonoBehaviour {
 
     public bool wallFlag = false;
     public bool enemyFlag = false;
+    public bool shardFlag = false;
 
     private List<ObjectPast> pastList = new List<ObjectPast>();
     
@@ -131,13 +132,23 @@ public class FlowObject : MonoBehaviour {
 
     void Reverse()
     {
-        
+        if (shardFlag)
+        {
+            rbody.isKinematic = true;
+            rbody.useGravity = false;
+        }
+
         if (!started)
         {
             rbody.mass = mass;
             rbody.velocity = Vector3.zero;
             rbody.angularVelocity = Vector3.zero;
             rbody.isKinematic = true;
+
+            if (shardFlag)
+            {
+                rbody.useGravity = false;
+            }
             
             if (enemyFlag)
             {
@@ -161,16 +172,23 @@ public class FlowObject : MonoBehaviour {
         }
         else
         {
-            if (destroyAtEnd)
+            if (destroyAtEnd & !shardFlag)
             {
                 Destroy(gameObject);
             }
 
             reversing = false;
             started = false;
-            if (!wallFlag)
+            if (!wallFlag & !shardFlag)
             {
                 rbody.isKinematic = false;
+            }
+
+            if (shardFlag)
+            {
+                rbody.velocity = Vector3.zero;
+                rbody.angularVelocity = Vector3.zero;
+                rbody.isKinematic = true;
             }
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;

@@ -38,7 +38,7 @@ public class FlowObjectMaster : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) & !FlowObject.slowing)
+        if (Input.GetMouseButtonDown(1) & !FlowObject.slowing)
         {
             FlowObject.slowing = true;
             st = true;
@@ -90,6 +90,7 @@ public class FlowObjectMaster : MonoBehaviour {
         }
         FlowObject.falseTimescalePrev = FlowObject.falseTimescale;
         FlowObject.falseTimescale = (FlowObject.slowDistance - (Time.time - startTime)) / FlowObject.slowDistance;
+        FlowObject.falseTimescale = FlowObject.falseTimescale * Mathf.Abs(FlowObject.falseTimescale);
         if (FlowObject.falseTimescale < -1)
         {
             FlowObject.falseTimescale = 1;

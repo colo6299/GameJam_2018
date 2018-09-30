@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
     public Animator animator;
     public Transform eyePos;
     public NavMeshAgent agent;
+    public GameObject dieShards;
 
     public GameObject player;
     public Transform waypoints;
@@ -44,13 +45,6 @@ public class Enemy : MonoBehaviour {
         sawStart = false;
         seesPlayer = false;
         seeChance = 0;
-
-
-
-
-
-
-
     }
 
 
@@ -63,7 +57,13 @@ public class Enemy : MonoBehaviour {
 
 
 
-
+    public GameObject Die()
+    {
+        GameObject g = Instantiate(dieShards, transform.position, transform.rotation, null);
+        Destroy(g, 30);
+        Destroy(gameObject);
+        return g;
+    }
 
     void Move()
     {

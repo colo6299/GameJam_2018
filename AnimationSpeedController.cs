@@ -13,6 +13,6 @@ public class AnimationSpeedController : MonoBehaviour {
 
     void Update()
     {
-        anim.speed = FlowObject.falseTimescale;
+        anim.SetFloat("Timescale", FlowObject.falseTimescale);
     }
 }
