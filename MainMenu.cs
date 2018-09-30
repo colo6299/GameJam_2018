@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("LevelZero");
+        SceneManager.LoadSceneAsync("LevelSelect");
     }
 
     public void QuitGame()
