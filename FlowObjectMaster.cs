@@ -44,7 +44,7 @@ public class FlowObjectMaster : MonoBehaviour {
         {
             FlowObject.slowing = true;
             st = true;
-            Destroy(Instantiate(waahhhDio, transform.position, transform.rotation, null), 15f);
+            Destroy(Instantiate(waahhhDio, transform.position, transform.rotation, null), 10f);
         }
 
         if ((startTime + FlowObject.slowDistance * 2) - Time.time < 1f)
