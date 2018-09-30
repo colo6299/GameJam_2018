@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemyDissolve : MonoBehaviour {
 
-    GameObject particleEffect;
+    public GameObject particleEffect;
     
     void OnTriggerEnter(Collider other)
     {
-        Destroy(Instantiate(particleEffect, other.transform.position, other.transform.rotation, null), 2f);
+        Debug.Log("af");
+        GameObject p = Instantiate(particleEffect, other.transform.position, other.transform.rotation, null);
+        Destroy(p, 2f);
         Destroy(other.gameObject);
     }
 

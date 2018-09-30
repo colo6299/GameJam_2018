@@ -25,6 +25,11 @@ public class PlayerSceneManager : MonoBehaviour {
 
     void Update()
     {
+        if (transform.position.y < -10)
+        {
+            Die();
+        }
+
         Time.timeScale = 1;
         if (Input.GetButtonDown("Cancel") & !inMenu & !ded)
         {

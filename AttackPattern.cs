@@ -26,7 +26,12 @@ public class AttackPattern : MonoBehaviour {
     {
         foreach (Rigidbody r in shards.GetComponentsInChildren<Rigidbody>())
         {
-            r.AddExplosionForce(force * r.mass, enemy.transform.position, 3f);
+            r.isKinematic = false;
+            if (r.name != "Cube")
+            {
+                r.AddExplosionForce(force * r.mass, enemy.transform.position, 3f);
+            }
+
         }
     }
 

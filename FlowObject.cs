@@ -125,6 +125,10 @@ public class FlowObject : MonoBehaviour {
             started = false;
             Reverse();
         }
+        if (shardFlag)
+        {
+            rbody.isKinematic = false;
+        }
 
 
 
@@ -136,6 +140,8 @@ public class FlowObject : MonoBehaviour {
         {
             rbody.isKinematic = true;
             rbody.useGravity = false;
+            rbody.detectCollisions = true;
+            rbody.mass = 1;
         }
 
         if (!started)
@@ -167,6 +173,13 @@ public class FlowObject : MonoBehaviour {
             rbody.detectCollisions = false;
             if (pastList.Count == 0)
             {
+                if (shardFlag)
+                {
+                    Debug.Log("ggg");
+                    rbody.detectCollisions = true;
+                    Destroy(this);
+                    return;
+                }
 
             }
         }
@@ -189,6 +202,7 @@ public class FlowObject : MonoBehaviour {
                 rbody.velocity = Vector3.zero;
                 rbody.angularVelocity = Vector3.zero;
                 rbody.isKinematic = true;
+
             }
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;
