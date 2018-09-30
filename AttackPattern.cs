@@ -19,6 +19,7 @@ public class AttackPattern : MonoBehaviour {
         shards = other.GetComponent<Enemy>().Die();
         enemy = other.gameObject;
         Explode();
+        Debug.Log("boom");
     }
 
 

@@ -143,6 +143,14 @@ public class FlowObject : MonoBehaviour {
             rbody.detectCollisions = true;
             rbody.mass = 1;
         }
+        if (enemyFlag)
+        {
+            enemy.agent.enabled = true;
+            enemy.enabled = true;
+            enemy.agent.speed = agentSpeed;
+            enemy.agent.angularSpeed = agentTurn;
+
+        }
 
         if (!started)
         {
@@ -170,15 +178,20 @@ public class FlowObject : MonoBehaviour {
 
             transform.position = past.position;
             transform.rotation = past.rotation;
-            rbody.detectCollisions = false;
+            if (!enemyFlag)
+            {
+                rbody.detectCollisions = false;
+            }
+
             if (pastList.Count == 0)
             {
+
                 if (shardFlag)
                 {
                     Debug.Log("ggg");
                     rbody.detectCollisions = true;
                     Destroy(this);
-                    return;
+                    return; 
                 }
 
             }

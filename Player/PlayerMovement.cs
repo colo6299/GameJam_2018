@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         speed = moveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
-        // Hide cursor when locking
         Cursor.visible = (CursorLockMode.Locked != wantedMode);
     }
 
@@ -113,7 +112,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
         float forwardMove = Input.GetAxis("Vertical");
-        float sideMove = Input.GetAxis("Horizontal"); Debug.Log(sideMove);
+        float sideMove = Input.GetAxis("Horizontal");
 
         Vector3 localVelocity = player.transform.InverseTransformDirection(rbodyPlayer.velocity);
 
