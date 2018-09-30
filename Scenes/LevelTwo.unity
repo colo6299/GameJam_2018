@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -2198,6 +2198,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.328188, y: 0.14129066, z: 8.084508}
   m_Center: {x: 3.983018, y: 6.8693657, z: 5.990504}
+--- !u!65 &1369220536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1369220521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4016533, y: 8.113044, z: 3.9957013}
+  m_Center: {x: -3.9189167, y: 3.5565224, z: -8.30971}
 --- !u!1001 &1379765208
 Prefab:
   m_ObjectHideFlags: 0
