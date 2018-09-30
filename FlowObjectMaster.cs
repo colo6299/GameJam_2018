@@ -19,8 +19,20 @@ public class FlowObjectMaster : MonoBehaviour {
 
     void Awake()
     {
+        
         playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        normalFOV = playerCam.fieldOfView;
+        normalFOV = 60;
+        playerCam.fieldOfView = normalFOV;
+        started = false;
+        st = false;
+        returning = false;
+        startTime = 0;
+        FlowObject.slowing = false;
+        FlowObject.reversing = false;
+        FlowObject.falseTimescale = 1;
+        FlowObject.falseTimescalePrev = 1;
+        
+
     }
 
 

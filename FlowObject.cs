@@ -155,7 +155,7 @@ public class FlowObject : MonoBehaviour {
             rbody.detectCollisions = false;
             if (pastList.Count == 0)
             {
-                rbody.detectCollisions = true;
+
             }
         }
         else
