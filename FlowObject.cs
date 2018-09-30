@@ -130,12 +130,14 @@ public class FlowObject : MonoBehaviour {
 
     void Reverse()
     {
+        
         if (!started)
         {
             rbody.mass = mass;
             rbody.velocity = Vector3.zero;
             rbody.angularVelocity = Vector3.zero;
             rbody.isKinematic = true;
+            
             if (enemyFlag)
             {
                 enemy.agent.enabled = false;
@@ -150,6 +152,7 @@ public class FlowObject : MonoBehaviour {
 
             transform.position = past.position;
             transform.rotation = past.rotation;
+            rbody.detectCollisions = false;
         }
         else
         {
@@ -167,10 +170,12 @@ public class FlowObject : MonoBehaviour {
             rbody.velocity = vel;
             rbody.angularVelocity = angVel;
             rbody.mass = mass;
+            rbody.detectCollisions = true;
             if (enemyFlag)
             {
                 enemy.agent.enabled = true;
                 enemy.enabled = true;
+
             }
         }
 
