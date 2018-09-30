@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = true;
     }
 
 
@@ -57,7 +58,7 @@ public class Enemy : MonoBehaviour {
     {
         if (seesPlayer)
         {
-            WaypointMove();
+            AttackMove();
         }
         else
         {
