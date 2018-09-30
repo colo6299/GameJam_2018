@@ -30,7 +30,7 @@ public class Menu : MonoBehaviour
             if (i < 1f)
             {
                 UpdatePixels(i);
-                i += 0.8f * Time.deltaTime;
+                i += 1.4f * Time.deltaTime;
             }
             else 
             {

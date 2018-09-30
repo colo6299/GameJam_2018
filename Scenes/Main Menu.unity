@@ -190,7 +190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 827292804}
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -553,7 +553,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 827292804}
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelZeroButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 827292802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e82b711adef3749ad289a4aae29cba, type: 3}
+  m_Script: {fileID: 11500000, guid: 20f43b83ba461c748a0fc701bbdb9afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 594159807}
