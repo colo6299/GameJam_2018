@@ -47,7 +47,8 @@ public class FlowObject : MonoBehaviour {
         if (enemyFlag)
         {
             enemy = GetComponent<Enemy>();
-
+            agentSpeed = 3.5f;
+            agentTurn = 120;
         }
     }
 

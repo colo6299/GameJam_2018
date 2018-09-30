@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
         float forwardMove = Input.GetAxis("Vertical");
-        float sideMove = Input.GetAxis("Horizontal");
+        float sideMove = Input.GetAxis("Horizontal"); Debug.Log(sideMove);
 
         Vector3 localVelocity = player.transform.InverseTransformDirection(rbodyPlayer.velocity);
 

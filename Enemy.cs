@@ -40,6 +40,17 @@ public class Enemy : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = true;
+        seeTotal = 0;
+        sawStart = false;
+        seesPlayer = false;
+        seeChance = 0;
+
+
+
+
+
+
+
     }
 
 
