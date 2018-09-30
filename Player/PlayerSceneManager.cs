@@ -25,6 +25,12 @@ public class PlayerSceneManager : MonoBehaviour {
 
     void Update()
     {
+
+        if (!inMenu)
+        {
+            Cursor.visible = false;
+        }
+
         if (transform.position.y < -10)
         {
             Die();
