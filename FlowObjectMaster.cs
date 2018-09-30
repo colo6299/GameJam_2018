@@ -15,6 +15,7 @@ public class FlowObjectMaster : MonoBehaviour {
     private float FOVdistance = 0.5f;
     private float FOVretDistance = 0.1f;
     private bool returning = false;
+    public GameObject waahhhDio;
 
 
     void Awake()
@@ -31,6 +32,7 @@ public class FlowObjectMaster : MonoBehaviour {
         FlowObject.reversing = false;
         FlowObject.falseTimescale = 1;
         FlowObject.falseTimescalePrev = 1;
+
         
 
     }
@@ -42,7 +44,7 @@ public class FlowObjectMaster : MonoBehaviour {
         {
             FlowObject.slowing = true;
             st = true;
-
+            Destroy(Instantiate(waahhhDio, transform.position, transform.rotation, null), 15f);
         }
 
         if ((startTime + FlowObject.slowDistance * 2) - Time.time < 1f)

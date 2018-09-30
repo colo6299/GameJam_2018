@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     public Transform eyePos;
     public NavMeshAgent agent;
     public GameObject dieShards;
+    public GameObject fireSound;
 
     public GameObject player;
     public Transform waypoints;
@@ -101,6 +102,7 @@ public class Enemy : MonoBehaviour {
         {
             Destroy(Instantiate(projectile, firePos.position, firePos.rotation, null), 20);
             fireTime = Time.time + 1 / fireRate;
+            Destroy(Instantiate(fireSound, firePos.position, firePos.rotation, null), 10f);
         }
     }
 

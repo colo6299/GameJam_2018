@@ -422,8 +422,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939131401776174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.97, y: 0, z: -2.588}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 7.315, y: 3.802, z: 4.835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4891617602105730}
@@ -432,7 +432,7 @@ Transform:
   - {fileID: 4230498374104040}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4847097594335806
 Transform:
   m_ObjectHideFlags: 1
@@ -820,10 +820,11 @@ MonoBehaviour:
   eyePos: {fileID: 4847097594335806}
   agent: {fileID: 0}
   dieShards: {fileID: 1941710690470424, guid: f9e2ec7d9bf635b4385cd8bc622d1c44, type: 2}
+  fireSound: {fileID: 1671010657575630, guid: ae960755f662efc40a6bb33b994ecc99, type: 2}
   player: {fileID: 0}
   waypoints: {fileID: 0}
   currentTransform: {fileID: 0}
-  waypointDelay: 10
+  waypointDelay: 3
   seeThreshold: 5
   sightCeil: 1.5
   sightDrop: 0.5
