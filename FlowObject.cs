@@ -153,6 +153,10 @@ public class FlowObject : MonoBehaviour {
             transform.position = past.position;
             transform.rotation = past.rotation;
             rbody.detectCollisions = false;
+            if (pastList.Count == 0)
+            {
+                rbody.detectCollisions = true;
+            }
         }
         else
         {
@@ -175,6 +179,8 @@ public class FlowObject : MonoBehaviour {
             {
                 enemy.agent.enabled = true;
                 enemy.enabled = true;
+                enemy.agent.speed = agentSpeed;
+                enemy.agent.angularSpeed = agentTurn;
 
             }
         }

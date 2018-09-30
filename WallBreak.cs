@@ -22,6 +22,13 @@ public class WallBreak : MonoBehaviour {
                 rbd.isKinematic = true;
             }
         }
+        if (FlowObject.falseTimescale == 1)
+        {
+            foreach (Rigidbody rbd in rbodies)
+            {
+                rbd.detectCollisions = true;
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
