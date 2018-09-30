@@ -69,6 +69,9 @@ public class LevelMenu : MonoBehaviour
     {
         print(i);
         rend.GetMaterial().SetFloat("_InvertAmount", i);
+        foreach (CanvasRenderer childRend in gameObject.GetComponentsInChildren<CanvasRenderer>()) {
+            childRend.GetMaterial().SetFloat("_InvertAmount", i);
+        }
     }
 
 }
