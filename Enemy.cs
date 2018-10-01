@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour {
     private bool sawStart;
     private bool seesPlayer;
     private Vector3 sawPos;
+    public float seeMult = 1f;
 
     public float sightCeil = 1.5f;
     public float sightDrop = 0.5f;
@@ -80,6 +81,10 @@ public class Enemy : MonoBehaviour {
 
     void WaypointMove()
     {
+        if (waypoints.childCount == 0)
+        {
+            return;
+        }
         if (Time.time >= wptTime)
         {
             wptIter++;
@@ -110,7 +115,7 @@ public class Enemy : MonoBehaviour {
     void See()
     {
         RaycastHit hit;
-        if (Physics.Linecast(eyePos.position, player.transform.position, out hit))
+        if (Physics.Linecast(eyePos.position, player.transform.position + Vector3.up, out hit))
         {
             if (hit.transform.gameObject.tag == "Player")
             {
@@ -122,12 +127,17 @@ public class Enemy : MonoBehaviour {
     void Look()
     {
         RaycastHit hit;
-        if (Physics.Linecast(eyePos.position, player.transform.position, out hit))
+        if (Physics.Linecast(eyePos.position, player.transform.position + Vector3.up, out hit))
         {
             if (hit.transform.gameObject.tag == "Player")
             {
                 Vector3 targetDir = player.transform.position + Vector3.up - transform.position;
                 float angle = Vector3.Angle(targetDir, eyePos.forward);
+                angle /= 180;
+
+                seeChance = 1 - angle;
+                seeChance += 0.2f;
+                seeChance /= targetDir.magnitude / 100f;
 
                 if (angle > 130)
                 {
@@ -141,7 +151,7 @@ public class Enemy : MonoBehaviour {
                     seeChance += 0.2f;
                 }
 
-                seeTotal += seeChance * Time.deltaTime * 10;
+                seeTotal += seeChance * Time.deltaTime * 10 * seeMult;
                 
             }
         }
