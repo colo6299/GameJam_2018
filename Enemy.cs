@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     public float speed;
 
     public float fireRate;
+    public float accuracy = 0.1f;
     private float fireTime;
     public GameObject projectile;
     public Transform firePos;
@@ -105,8 +106,10 @@ public class Enemy : MonoBehaviour {
     {
         if (Time.time > fireTime)
         {
-            Destroy(Instantiate(projectile, firePos.position, firePos.rotation, null), 20);
-            fireTime = Time.time + 1 / fireRate;
+
+            
+            Destroy(Instantiate(projectile, firePos.position, Quaternion.Lerp(firePos.rotation, Random.rotation, accuracy), null), 20);
+            fireTime = Time.time + 1 / (fireRate * Mathf.Abs(FlowObject.falseTimescale));
             Destroy(Instantiate(fireSound, firePos.position, firePos.rotation, null), 10f);
         }
     }

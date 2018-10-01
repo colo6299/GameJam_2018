@@ -858,6 +858,7 @@ MonoBehaviour:
   time: 0
   speed: 2
   fireRate: 2
+  accuracy: 0.03
   projectile: {fileID: 1548565599599706, guid: bd6a263555a6f1c48b3ddacb482d0614, type: 2}
   firePos: {fileID: 4979465416705350}
   animator: {fileID: 95309925554066486}
