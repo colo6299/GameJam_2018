@@ -27,10 +27,10 @@ public class Enemy : MonoBehaviour {
     private float wptTime;
     private int wptIter = 0;
 
-    private float seeTotal;
+    public float seeTotal;
     public float seeThreshold = 5f;
     private bool sawStart;
-    private bool seesPlayer;
+    public bool seesPlayer;
     private Vector3 sawPos;
     public float seeMult = 1f;
 
@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour {
         sawStart = false;
         seesPlayer = false;
         seeChance = 0;
+        
     }
 
 
@@ -80,11 +81,13 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    void WaypointMove()
+    public void WaypointMove()
     {
-        if (waypoints.childCount == 0)
+        if (waypoints == null)
         {
-            return;
+            Transform hldr = Instantiate(new GameObject("GenWaypointHolder"), transform.position, transform.rotation, null).transform;
+            Instantiate(new GameObject("GenWaypoint"), hldr);
+            waypoints = hldr;
         }
         if (Time.time >= wptTime)
         {

@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour {
         speed = moveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = (CursorLockMode.Locked != wantedMode);
+        player.transform.eulerAngles = new Vector3(0, 0, 0) * mouseSensitivity;
+        playerCam.transform.localEulerAngles = new Vector3(0, 0, 0) * mouseSensitivity;
+
     }
 
 

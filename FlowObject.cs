@@ -17,6 +17,9 @@ public class FlowObject : MonoBehaviour {
     private Enemy enemy;
     private float agentSpeed;
     private float agentTurn;
+    private float enemySight;
+    private bool enemySees;
+    private Vector3 sawPos;
 
     private float mass;
     private Vector3 vel;
@@ -26,8 +29,7 @@ public class FlowObject : MonoBehaviour {
 
     private float startTime;
     private bool started;
-    private bool destroyAtEnd;
-    
+    private bool destroyAtEnd; 
 
     public bool wallFlag = false;
     public bool enemyFlag = false;
@@ -50,6 +52,8 @@ public class FlowObject : MonoBehaviour {
             enemy = GetComponent<Enemy>();
             agentSpeed = 3.5f;
             agentTurn = 120;
+            enemySees = enemy.seesPlayer;
+            enemySight = enemy.seeTotal;
         }
     }
 
@@ -97,6 +101,10 @@ public class FlowObject : MonoBehaviour {
             {
                 agentSpeed = enemy.agent.speed;
                 agentTurn = enemy.agent.angularSpeed;
+                if (enemySees)
+                {
+                    sawPos = enemy.player.transform.position;
+                }
             }
         }
 
@@ -146,9 +154,9 @@ public class FlowObject : MonoBehaviour {
         if (enemyFlag)
         {
             enemy.agent.enabled = true;
-            enemy.enabled = true;
             enemy.agent.speed = agentSpeed;
             enemy.agent.angularSpeed = agentTurn;
+
 
         }
 
@@ -168,6 +176,16 @@ public class FlowObject : MonoBehaviour {
             {
                 enemy.agent.enabled = false;
                 enemy.enabled = false;
+                enemy.seeTotal = enemySight;
+                enemy.seesPlayer = enemySees;
+                if (enemySees)
+                {
+                    enemy.agent.SetDestination(sawPos);
+                }
+                else
+                {
+                    enemy.WaypointMove();
+                }
             }
         }
 
@@ -188,7 +206,6 @@ public class FlowObject : MonoBehaviour {
 
                 if (shardFlag)
                 {
-                    Debug.Log("ggg");
                     rbody.detectCollisions = true;
                     Destroy(this);
                     return; 
