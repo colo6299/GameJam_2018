@@ -14,7 +14,7 @@ public class InvertHere : MonoBehaviour {
 
     void Update()
     {
-        rend.material.SetFloat("_InvertAmount", FlowObject.falseTimescale);
+        rend.material.SetFloat("_InvertAmount", FlowObject.falseTimescale * 15);
     }
 
 }

@@ -71,11 +71,11 @@ public class PlayerMovement : MonoBehaviour {
 
         playerCam.transform.localEulerAngles -= new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * mouseSensitivity;
         
-        if (playerCam.transform.localEulerAngles.x > cameraMaxDown & playerCam.transform.localEulerAngles.x < 180)
+        if (playerCam.transform.localEulerAngles.x > cameraMaxDown && playerCam.transform.localEulerAngles.x < 180)
         {
             playerCam.transform.localEulerAngles = new Vector3(cameraMaxDown, 0, 0);        
         }
-        else if (playerCam.transform.localEulerAngles.x > 180 & playerCam.transform.localEulerAngles.x < 360 - cameraMaxUp)
+        else if (playerCam.transform.localEulerAngles.x > 180 && playerCam.transform.localEulerAngles.x < 360 - cameraMaxUp)
         {
             playerCam.transform.localEulerAngles = new Vector3(360 - cameraMaxUp, 0, 0);
         }

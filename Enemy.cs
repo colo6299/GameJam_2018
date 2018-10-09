@@ -169,11 +169,11 @@ public class Enemy : MonoBehaviour {
             seeTotal = seeThreshold * sightCeil;
         }
 
-        if (seeTotal > seeThreshold & !seesPlayer)
+        if (seeTotal > seeThreshold && !seesPlayer)
         {
             seesPlayer = true;
         }
-        else if (seeTotal > seeThreshold * sightDrop & seesPlayer)
+        else if (seeTotal > seeThreshold * sightDrop && seesPlayer)
         {
             seesPlayer = true;
         }

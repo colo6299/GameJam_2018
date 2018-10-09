@@ -26,7 +26,7 @@ public class Reciever : MonoBehaviour {
 
     public void Click()
     {
-        if (calcLock & !isKey)
+        if (calcLock && !isKey)
         {
             return;
         }
@@ -60,7 +60,7 @@ public class Reciever : MonoBehaviour {
             dragged = true;
         }
 
-        if (!Input.GetMouseButton(0) & dragged)
+        if (!Input.GetMouseButton(0) && dragged)
         {
             dragged = false;
             dropped = true;

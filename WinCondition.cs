@@ -22,7 +22,7 @@ public class WinCondition : MonoBehaviour {
                 playerCam.fieldOfView += FOVspread * Time.deltaTime / FOVdistance;
             }
         }
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 & !going)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && !going)
         {
             timeToGo = Time.time + 12f;
             going = true;
@@ -30,7 +30,7 @@ public class WinCondition : MonoBehaviour {
 
         }
 
-        if (timeToGo < Time.time & going)
+        if (timeToGo < Time.time && going)
         {
             SceneManager.LoadSceneAsync(nextLevel);
         }

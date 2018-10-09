@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSceneManager : MonoBehaviour {
 
-    private PlayerMovement plrMv;
+    private PlayerMovement3ps plrMv;
     private bool ded;
     public bool restart;
     public bool toMenu;
@@ -19,17 +19,13 @@ public class PlayerSceneManager : MonoBehaviour {
 
     void Awake()
     {
-        plrMv = GetComponent<PlayerMovement>();
+        plrMv = GetComponent<PlayerMovement3ps>();
     }
 
 
     void Update()
     {
 
-        if (!inMenu)
-        {
-            Cursor.visible = false;
-        }
 
         if (transform.position.y < -10)
         {
@@ -37,39 +33,35 @@ public class PlayerSceneManager : MonoBehaviour {
         }
 
         Time.timeScale = 1;
-        if (Input.GetButtonDown("Cancel") & !inMenu & !ded)
+        if (Input.GetButtonDown("Cancel") && !inMenu && !ded)
         {
             OpenMenu();
         }
-        else if (Input.GetButtonDown("Cancel") & inMenu & !ded)
+        else if (Input.GetButtonDown("Cancel") && inMenu && !ded)
         {
             inMenu = false;
             escMenu.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             plrMv.enabled = true;
         }
 
 
-        Debug.Log(Cursor.lockState);
 
 
 
 
 
 
-
-        if (ded & restart)
+        if (ded && restart)
         {
             SceneManager.LoadSceneAsync(currentLevel);
         }
 
-        if (ded & exit)
+        if (ded && exit)
         {
             Application.Quit();
         }
 
-        if (ded & toMenu)
+        if (ded && toMenu)
         {
             SceneManager.LoadSceneAsync("Main Menu");
         }

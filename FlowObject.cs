@@ -215,14 +215,14 @@ public class FlowObject : MonoBehaviour {
         }
         else
         {
-            if (destroyAtEnd & !shardFlag)
+            if (destroyAtEnd && !shardFlag)
             {
                 Destroy(gameObject);
             }
 
             reversing = false;
             started = false;
-            if (!wallFlag & !shardFlag)
+            if (!wallFlag && !shardFlag)
             {
                 rbody.isKinematic = false;
             }

@@ -15,7 +15,7 @@ public class WallBreak : MonoBehaviour {
 
     void Update()
     {
-        if (breakReady & FlowObject.falseTimescale < 0)
+        if (breakReady && FlowObject.falseTimescale < 0)
         {
             foreach (Rigidbody rbd in rbodies)
             {
@@ -50,7 +50,7 @@ public class WallBreak : MonoBehaviour {
 
     void PlayerBreak()
     {
-        if (FlowObject.slowing & FlowObject.falseTimescale > 0)
+        if (FlowObject.slowing && FlowObject.falseTimescale > 0)
         {
             if (FlowObject.falseTimescale == 1)
             {

@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) & Time.time > attackTime)
+        if (Input.GetMouseButtonDown(0) && Time.time > attackTime)
         {
             if (FlowObject.falseTimescale > 0)
             {

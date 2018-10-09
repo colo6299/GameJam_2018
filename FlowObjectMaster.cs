@@ -40,7 +40,7 @@ public class FlowObjectMaster : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) & !FlowObject.slowing)
+        if (Input.GetMouseButtonDown(1) && !FlowObject.slowing)
         {
             FlowObject.slowing = true;
             st = true;
